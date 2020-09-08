@@ -1,0 +1,19 @@
+{
+  "name": "bosta-nodejs",
+  "version": "1.0.0",
+  "description": "A Node.js client SDK for Bosta APIs integration.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bostaapp/bosta-nodejs.git"
+  },
+  "author": "Ahmed Elgendy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bostaapp/bosta-nodejs/issues"
+  },
+  "homepage": "https://github.com/bostaapp/bosta-nodejs#readme"
+}
