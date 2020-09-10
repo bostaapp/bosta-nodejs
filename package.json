@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/bostaapp/bosta-nodejs/issues"
   },
-  "homepage": "https://github.com/bostaapp/bosta-nodejs#readme"
+  "homepage": "https://github.com/bostaapp/bosta-nodejs#readme",
+  "dependencies": {
+    "axios": "^0.19.2"
+  }
 }
