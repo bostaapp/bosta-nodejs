@@ -1,3 +1,6 @@
+# npm published library
+/lib/
+
 # Logs
 logs
 *.log
