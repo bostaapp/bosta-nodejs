@@ -10,18 +10,24 @@ class BostaClient {
         this.delivery = new DeliveryClient(this);
     }
 
-    static async send(method, path, body) {
+    async send(method, path, body) {
+        try {
+            const result = await axios({
+                method: method,
+                url: `${this.baseUrl}/${path}`,
+                data: body ? body : undefined,
+                headers: {
+                    'Authorization': this.apiKey,
+                    contentType: 'application/json',
+                },
+                timeout: 30000
+            });
 
-        return axios({
-            method: method,
-            url: `${this.baseUrl}/${path}`,
-            data: body ? body : undefined,
-            headers: {
-                'Authorization': this.apiKey,
-                contentType: 'application/json',
-            }
-        })
+            return result;
+        } catch (error) {
+            throw new Error (error.response.data.message);
+        }
     }
 }
 
-export default BostaClient;
+module.exports = BostaClient;

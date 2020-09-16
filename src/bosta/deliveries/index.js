@@ -6,97 +6,154 @@ class DeliveryClient {
     async createDelivery(
         type,
         specs,
-        notes,
         cod,
         dropOffAddress,
         businessReference,
         receiver,
+        notes,
     ) {
-        const data = {
-            type,
-            specs,
-            notes,
-            cod,
-            dropOffAddress,
-            businessReference,
-            receiver,
-        };
+        try {
 
-        const result = await this.apiClient.send('post', '/deliveries', data);
+            const data = {
+                type,
+                specs,
+                cod,
+                dropOffAddress,
+                businessReference,
+                receiver,
+                notes: notes ? notes : undefined
+            };
+    
+            const result = await this.apiClient.send('post', 'deliveries', data);
+    
+            if (result.success = true) {
+    
+                return result.data || result.message;
+            } else {
+    
+                throw new Error (result.message);
+            }
+        } catch(error) {
 
-        if (result.success = true) {
-
-            return result.data || result.message;
-        } else {
-
-            throw new Error (result.message);
+            throw new Error(error);
         }
     }
 
     async getAllDeliveries() {
 
-        const result = await this.apiClient.send('get', '/deliveries');
+        try {
 
-        if (result.success = true) {
+            const result = await this.apiClient.send('get', 'deliveries');
 
-            return result.data || result.message;
-        } else {
+            if (result.success = true) {
 
-            throw new Error (result.message);
+                return result.data || result.message;
+            } else {
+
+                throw new Error (result.message);
+            }
+        } catch(error) {
+
+            throw new Error(error);
         }
     }
 
     async getDeliveryByTrakingNumber(trackingNumber) {
 
-        const result = await this.apiClient.send('get', `/deliveries/${trackingNumber}`);
+        try {
 
-        if (result.success = true) {
+            const result = await this.apiClient.send('get', `deliveries/${trackingNumber}`);
 
-            return result.data || result.message;
-        } else {
+            if (result.success = true) {
 
-            throw new Error (result.message);
+                return result.data || result.message;
+            } else {
+
+                throw new Error (result.message);
+            }
+        } catch(error) {
+
+            throw new Error(error);
         }
     }
 
     async trackDelivery(trackingNumber) {
 
-        const result = await this.apiClient.send('get', `/deliveries/${trackingNumber}/tracking`);
+        try {
 
-        if (result.success = true) {
+            const result = await this.apiClient.send('get', `deliveries/${trackingNumber}/tracking`);
 
-            return result.data || result.message;
-        } else {
+            if (result.success = true) {
 
-            throw new Error (result.message);
+                return result.data || result.message;
+            } else {
+
+                throw new Error (result.message);
+            }
+        } catch(error) {
+
+            throw new Error(error);
         }
     }
 
     async printDeliveryAWB(deliveryId) {
 
-        const result = await this.apiClient.send('get', `/deliveries/awb/${deliveryId}`);
+        try {
 
-        if (result.success = true) {
+            const result = await this.apiClient.send('get', `deliveries/awb/${deliveryId}`);
 
-            return result.data || result.message;
-        } else {
+            if (result.success = true) {
+    
+                return result.data || result.message;
+            } else {
+    
+                throw new Error (result.message);
+            }
+        } catch(error) {
 
-            throw new Error (result.message);
+            throw new Error(error);
+        }
+    }
+
+    async updateDelivery(
+        deliveryId,
+        updatePayload,
+    ) {
+        try {
+
+            const result = await this.apiClient.send('put', `/deliveries/${deliveryId}`, updatePayload);
+    
+            if (result.success = true) {
+
+                return result.data || result.message;
+            } else {
+
+                throw new Error (result.message);
+            }
+        } catch(error) {
+
+            throw new Error (error);
         }
     }
 
     async terminateDelivery(deliveryId) {
+        try {
 
-        const result = await this.apiClient.send('delete', `/deliveries/awb/${deliveryId}`);
+            const result = await this.apiClient.send('delete', `/deliveries/${deliveryId}`);
 
-        if (result.success = true) {
+            if (result.success = true) {
+    
+                return result.data || result.message;
+            } else {
+    
+                throw new Error (result.message);
+            }
+    
+        } catch(error) {
 
-            return result.data || result.message;
-        } else {
-
-            throw new Error (result.message);
+            throw new Error(error);
         }
     }
 }
 
-export default new DeliveryClient();
+module.exports = DeliveryClient;

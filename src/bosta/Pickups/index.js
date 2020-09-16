@@ -4,80 +4,131 @@ class PickupClient {
     }
 
     async getBusinessPickupLocations() {
-        const result = await this.apiClient.send('get', '/pickup-locations');
+        try {
 
-        if (result.success = true) {
+            const result = await this.apiClient.send('get', '/pickup-locations');
 
-            return result.data || result.message;
-        } else {
+            if (result.success = true) {
 
-            throw new Error (result.message);
+                return result.data || result.message;
+            } else {
+
+                throw new Error (result.message);
+            }
+        } catch(error) {
+
+            throw new Error (error);
         }
     }
 
     async createPickup(
         businessLocationId,
-        notes,
         scheduledDate,
         scheduledTimeSlot,
         contactPerson,
+        notes,
     ) {
-        const data = {
-            businessLocationId,
-            notes,
-            scheduledDate,
-            scheduledTimeSlot,
-            contactPerson,
-        };
+        try {
 
-        const result = await this.apiClient.send('post', '/pickups', data);
+            const data = {
+                businessLocationId,
+                scheduledDate,
+                scheduledTimeSlot,
+                contactPerson,
+                notes: notes ? notes : undefined,
+            };
+    
+            const result = await this.apiClient.send('post', 'pickups', data);
+    
+            if (result.success = true) {
 
-        if (result.success = true) {
+                return result.data || result.message;
+            } else {
 
-            return result.data || result.message;
-        } else {
+                throw new Error (result.message);
+            }
+        } catch(error) {
 
-            throw new Error (result.message);
+            throw new Error (error);
         }
     }
 
     async getAllPickups() {
 
-        const result = await this.apiClient.send('get', '/pickups');
+        try {
 
-        if (result.success = true) {
+            const result = await this.apiClient.send('get', '/pickups');
 
-            return result.data || result.message;
-        } else {
+            if (result.success = true) {
 
-            throw new Error (result.message);
+                return result.data || result.message;
+            } else {
+
+                throw new Error (result.message);
+            }
+        } catch(error) {
+
+            throw new Error (error);
         }
     }
 
     async getPickupById(pickupId) {
 
-        const result = await this.apiClient.send('get', `/pickups/${pickupId}`, data);
+        try {
 
-        if (result.success = true) {
+            const result = await this.apiClient.send('get', `/pickups/${pickupId}`, data);
 
-            return result.data || result.message;
-        } else {
+            if (result.success = true) {
 
-            throw new Error (result.message);
+                return result.data || result.message;
+            } else {
+
+                throw new Error (result.message);
+            }
+        } catch(error) {
+
+            throw new Error (error);
+        }
+    }
+
+    async updatePickup(
+        pickupId,
+        updatePayload,
+    ) {
+        try {
+
+            const result = await this.apiClient.send('put', `pickups/${pickupId}`, updatePayload);
+    
+            if (result.success = true) {
+
+                return result.data || result.message;
+            } else {
+
+                throw new Error (result.message);
+            }
+        } catch(error) {
+
+            throw new Error (error);
         }
     }
 
     async deletePickup(pickupId) {
-        const result = await this.apiClient.send('delete', `/pickups/${pickupId}`, data);
+        try {
 
-        if (result.success = true) {
+            const result = await this.apiClient.send('delete', `/pickups/${pickupId}`, data);
 
-            return result.data || result.message;
-        } else {
+            if (result.success = true) {
 
-            throw new Error (result.message);
+                return result.data || result.message;
+            } else {
+
+                throw new Error (result.message);
+            }
+        } catch(error) {
+
+            throw new Error (error);
         }
     }
 }
 
-export default new PickupClient();
+module.exports = PickupClient;
