@@ -6,7 +6,7 @@ class PickupClient {
     async getBusinessPickupLocations() {
         try {
 
-            const result = await this.apiClient.send('get', '/pickup-locations');
+            const result = await this.apiClient.send('get', 'pickup-locations');
 
             if (result.success = true) {
 

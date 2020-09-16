@@ -1,13 +1,27 @@
 import axios from 'axios';
 import PickupClient from './Pickups/index.js';
 import DeliveryClient from './deliveries/index.js';
+import City from './cities';
+import Zone from './zones';
+import {
+    deliveryStates,
+    deliveryTypes,
+    pickupStates,
+    pickupTimeSlots
+} from '../utils';
 
 class BostaClient {
     constructor(apiKey, baseUrl) {
         this.apiKey = apiKey;
         this.baseUrl = baseUrl;
+        this.deliveryStates = deliveryStates;
+        this.deliveryTypes = deliveryTypes;
+        this.pickupStates = pickupStates;
+        this.pickupTimeSlots = pickupTimeSlots;
         this.pickup = new PickupClient(this);
         this.delivery = new DeliveryClient(this);
+        this.city = new City(this);
+        this.zone = new Zone(this);
     }
 
     async send(method, path, body) {
@@ -18,7 +32,8 @@ class BostaClient {
                 data: body ? body : undefined,
                 headers: {
                     'Authorization': this.apiKey,
-                    contentType: 'application/json',
+                    'contentType': 'application/json',
+                    'X-Requested-By': 'NODEJS'
                 },
                 timeout: 30000
             });
