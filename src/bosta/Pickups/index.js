@@ -57,7 +57,7 @@ class PickupClient {
 
         try {
 
-            const result = await this.apiClient.send('get', '/pickups');
+            const result = await this.apiClient.send('get', 'pickups');
 
             if (result.success = true) {
 
@@ -76,7 +76,7 @@ class PickupClient {
 
         try {
 
-            const result = await this.apiClient.send('get', `/pickups/${pickupId}`, data);
+            const result = await this.apiClient.send('get', `pickups/${pickupId}`);
 
             if (result.success = true) {
 
@@ -115,7 +115,7 @@ class PickupClient {
     async deletePickup(pickupId) {
         try {
 
-            const result = await this.apiClient.send('delete', `/pickups/${pickupId}`, data);
+            const result = await this.apiClient.send('delete', `pickups/${pickupId}`);
 
             if (result.success = true) {
 

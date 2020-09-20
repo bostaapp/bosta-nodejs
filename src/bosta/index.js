@@ -33,7 +33,7 @@ class BostaClient {
                 headers: {
                     'Authorization': this.apiKey,
                     'contentType': 'application/json',
-                    'X-Requested-By': 'NODEJS'
+                    'X-Requested-By': 'NODEJS-SDK'
                 },
                 timeout: 30000
             });
