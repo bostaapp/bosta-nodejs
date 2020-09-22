@@ -1,6 +1,6 @@
 {
   "name": "bosta",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "A Node.js client SDK for Bosta APIs integration.",
   "main": "lib/index.js",
   "scripts": {
