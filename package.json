@@ -25,6 +25,13 @@
     "type": "git",
     "url": "git+https://github.com/bostaapp/bosta-nodejs.git"
   },
+  "keywords": [
+    "bosta",
+    "bosta-sdk",
+    "bosta-api",
+    "bosta-integration",
+    "shipping"
+  ],
   "author": "Ahmed Elgendy",
   "license": "MIT",
   "bugs": {
