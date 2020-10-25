@@ -1,3 +1,3 @@
-import BostaClient from './bosta';
+import Bosta from './bosta';
 
-module.exports = BostaClient;
+module.exports = Bosta;

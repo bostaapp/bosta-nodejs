@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-const BostaClient = require('../lib');
+const Bosta = require('../lib');
 const {
     testApiKey,
     stgBaseUrl,
@@ -9,18 +9,18 @@ const {
 
 describe('Pickup', () => {
     
-    let bostaClient;
+    let bosta;
     let pickupId;
 
     before(async () => {
-        bostaClient = new BostaClient(
+        bosta = new Bosta(
             testApiKey,
             stgBaseUrl
         );
     });
 
     it('should success creating the pickup', async () => {
-        const createdPickup = await bostaClient.pickup.createPickup(
+        const createdPickup = await bosta.pickup.createPickup(
             pickupData.businessLocationId,
             pickupData.scheduledDate,
             pickupData.scheduledTimeSlot,
@@ -33,14 +33,14 @@ describe('Pickup', () => {
     });
 
     it('should update the created pickup', async () => {
-        await bostaClient.pickup.updatePickup(
+        await bosta.pickup.updatePickup(
             pickupId,
             {
                 contactPerson: updatedContactPerson
             }
         );
         
-        const updatedPickup = await bostaClient.pickup.getPickupById(
+        const updatedPickup = await bosta.pickup.getPickupById(
               pickupId
         );
 
@@ -48,7 +48,7 @@ describe('Pickup', () => {
     });
 
     it('should delete the created pickup', async () => {
-        const deleteResult = await bostaClient.pickup.deletePickup(
+        const deleteResult = await bosta.pickup.deletePickup(
             pickupId,
         );
 

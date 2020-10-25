@@ -10,7 +10,7 @@ import {
     pickupTimeSlots
 } from '../utils';
 
-class BostaClient {
+class Bosta {
     constructor(apiKey, baseUrl) {
         this.apiKey = apiKey;
         this.baseUrl = baseUrl;
@@ -45,4 +45,4 @@ class BostaClient {
     }
 }
 
-module.exports = BostaClient;
+module.exports = Bosta;
