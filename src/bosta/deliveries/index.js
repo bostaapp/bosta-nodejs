@@ -1,4 +1,4 @@
-class DeliveryClient {
+class Delivery {
     constructor (apiClient) {
         this.apiClient = apiClient;
     }
@@ -156,4 +156,4 @@ class DeliveryClient {
     }
 }
 
-module.exports = DeliveryClient;
+export default Delivery;

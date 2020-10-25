@@ -1,6 +1,6 @@
 import axios from 'axios';
-import PickupClient from './Pickups/index.js';
-import DeliveryClient from './deliveries/index.js';
+import Pickup from './pickups/index.js';
+import Delivery from './deliveries/index.js';
 import City from './cities';
 import Zone from './zones';
 import {
@@ -18,8 +18,8 @@ class Bosta {
         this.deliveryTypes = deliveryTypes;
         this.pickupStates = pickupStates;
         this.pickupTimeSlots = pickupTimeSlots;
-        this.pickup = new PickupClient(this);
-        this.delivery = new DeliveryClient(this);
+        this.pickup = new Pickup(this);
+        this.delivery = new Delivery(this);
         this.city = new City(this);
         this.zone = new Zone(this);
     }
@@ -33,7 +33,7 @@ class Bosta {
                 headers: {
                     'Authorization': this.apiKey,
                     'contentType': 'application/json',
-                    'X-Requested-By': 'NODEJS-SDK'
+                    'X-Requested-By': 'nodejs-sdk'
                 },
                 timeout: 30000
             });
@@ -45,4 +45,4 @@ class Bosta {
     }
 }
 
-module.exports = Bosta;
+export default Bosta;

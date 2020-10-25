@@ -22,4 +22,4 @@ class Zone {
     }
 }
 
-module.exports = Zone;
+export default Zone;
