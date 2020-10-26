@@ -13,7 +13,7 @@ import {
 class Bosta {
     constructor(apiKey, baseUrl) {
         this.apiKey = apiKey;
-        this.baseUrl = baseUrl;
+        this.baseUrl = baseUrl ? baseUrl : 'https://app.bosta.co';
         this.deliveryStates = deliveryStates;
         this.deliveryTypes = deliveryTypes;
         this.pickupStates = pickupStates;
@@ -28,7 +28,7 @@ class Bosta {
         try {
             const result = await axios({
                 method: method,
-                url: `${this.baseUrl}/${path}`,
+                url: `${this.baseUrl}/api/v0/${path}`,
                 data: body ? body : undefined,
                 headers: {
                     'Authorization': this.apiKey,

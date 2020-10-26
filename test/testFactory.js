@@ -1,5 +1,5 @@
 const testApiKey = 'a61c617b007f82b2fdd32c86903148f2fbbdf567ce488e577ec5500679c09ccd';
-const stgBaseUrl = 'https://stg-app.bosta.co/api/v0';
+const stgBaseUrl = 'https://stg-app.bosta.co';
 
 const deliveryData = {
     type: 10,
