@@ -1,6 +1,11 @@
 ## Bosta Nodejs Package
 The Bosta NodeJs SDK provides convenient access to the Bosta API from applications written in the JavaScript language.
 
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contribution](#contribution)
+- [License](#license)
+
 ## Installation
 
 ```bash
@@ -134,3 +139,14 @@ const cityId = cities.find(city => city.name === 'Gharbia')._id;
 ```bash
 const zones = await bosta.zone.getCityZones(cityId);
 ```
+
+## Contribution
+
+We are open to, and grateful for, any contributions made by the community.
+By contributing to Bosta, you agree to abide by the code of conduct.
+- [Contributing Guide](CONTRIBUTING.md) 
+- [Code of Conduct](CODE_OF_CONDUCT.md)
+
+## License
+
+The MIT License (MIT) [License](LICENSE).
