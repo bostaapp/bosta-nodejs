@@ -19,7 +19,7 @@ const bosta = new Bosta(
 );
 ```
 
-API_KEY is your integartion api key with bosta, to get an api key you must be registered, here is the registration link [Bosta](https://business.bosta.co/signup). And BASE_URL is the url to bosta Apis wheither it's [staging](https://stg-app.bosta.co) or [production](https://app.bosta.co). If BASE_URL is not sent in initialization as parameter it's [production](https://app.bosta.co) by default.
+`API_KEY` is your integartion api key with bosta, to get an api key you must be registered, here is the registration link [Bosta](https://business.bosta.co/signup). And `BASE_URL` is the url to bosta Apis wheither it's [staging](https://stg-app.bosta.co) or [production](https://app.bosta.co). If `BASE_URL` is not sent in initialization as parameter it's [production](https://app.bosta.co) by default.
 
 #### Use initiated bosta client to do the functionality of the following
 
