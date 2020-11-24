@@ -1,6 +1,6 @@
 import axios from 'axios';
-import PickupClient from './Pickups/index.js';
-import DeliveryClient from './deliveries/index.js';
+import Pickup from './pickups/index.js';
+import Delivery from './deliveries/index.js';
 import City from './cities';
 import Zone from './zones';
 import {
@@ -10,16 +10,16 @@ import {
     pickupTimeSlots
 } from '../utils';
 
-class BostaClient {
+class Bosta {
     constructor(apiKey, baseUrl) {
         this.apiKey = apiKey;
-        this.baseUrl = baseUrl;
+        this.baseUrl = baseUrl ? baseUrl : 'https://app.bosta.co';
         this.deliveryStates = deliveryStates;
         this.deliveryTypes = deliveryTypes;
         this.pickupStates = pickupStates;
         this.pickupTimeSlots = pickupTimeSlots;
-        this.pickup = new PickupClient(this);
-        this.delivery = new DeliveryClient(this);
+        this.pickup = new Pickup(this);
+        this.delivery = new Delivery(this);
         this.city = new City(this);
         this.zone = new Zone(this);
     }
@@ -28,12 +28,12 @@ class BostaClient {
         try {
             const result = await axios({
                 method: method,
-                url: `${this.baseUrl}/${path}`,
+                url: `${this.baseUrl}/api/v0/${path}`,
                 data: body ? body : undefined,
                 headers: {
                     'Authorization': this.apiKey,
                     'contentType': 'application/json',
-                    'X-Requested-By': 'NODEJS-SDK'
+                    'X-Requested-By': 'nodejs-sdk'
                 },
                 timeout: 30000
             });
@@ -45,4 +45,4 @@ class BostaClient {
     }
 }
 
-module.exports = BostaClient;
+export default Bosta;

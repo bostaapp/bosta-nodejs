@@ -22,4 +22,4 @@ class City {
     }
 }
 
-module.exports = City;
+export default City;

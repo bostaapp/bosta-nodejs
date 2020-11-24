@@ -1,4 +1,4 @@
-class DeliveryClient {
+class Delivery {
     constructor (apiClient) {
         this.apiClient = apiClient;
     }
@@ -121,7 +121,7 @@ class DeliveryClient {
     ) {
         try {
 
-            const result = await this.apiClient.send('put', `/deliveries/${deliveryId}`, updatePayload);
+            const result = await this.apiClient.send('put', `deliveries/${deliveryId}`, updatePayload);
     
             if (result.success = true) {
 
@@ -139,7 +139,7 @@ class DeliveryClient {
     async terminateDelivery(deliveryId) {
         try {
 
-            const result = await this.apiClient.send('delete', `/deliveries/${deliveryId}`);
+            const result = await this.apiClient.send('delete', `deliveries/${deliveryId}`);
 
             if (result.success = true) {
     
@@ -156,4 +156,4 @@ class DeliveryClient {
     }
 }
 
-module.exports = DeliveryClient;
+export default Delivery;

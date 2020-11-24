@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-const BostaClient = require('../lib');
+const Bosta = require('../lib');
 const {
     testApiKey,
     stgBaseUrl,
@@ -9,19 +9,19 @@ const {
 
 describe('Delivery', () => {
     
-    let bostaClient;
+    let bosta;
     let deliveryId;
     let trackingNumber;
 
     before(async () => {
-        bostaClient = new BostaClient(
+        bosta = new Bosta(
             testApiKey,
             stgBaseUrl
         );
     });
 
     it('should success and return new created delivery id and tracking number', async () => {
-        const createdDelivery = await bostaClient.delivery.createDelivery(
+        const createdDelivery = await bosta.delivery.createDelivery(
             deliveryData.type,
             deliveryData.specs,
             deliveryData.cod,
@@ -39,26 +39,26 @@ describe('Delivery', () => {
     });
 
     it('should update the created delivery', async () => {
-        await bostaClient.delivery.updateDelivery(
+        await bosta.delivery.updateDelivery(
             deliveryId,
             {
                 cod: newCodValue
             }
         );
         
-        const updateDelivery = await bostaClient.delivery.getDeliveryByTrakingNumber(
+        const updatedDelivery = await bosta.delivery.getDeliveryByTrakingNumber(
             trackingNumber
         );
-        
-        expect(updateDelivery.cod).to.equal(newCodValue);
+
+        expect(updatedDelivery.cod).to.equal(newCodValue);
     });
 
     it('should terminate the created delivery', async () => {
-        await bostaClient.delivery.terminateDelivery(
+        await bosta.delivery.terminateDelivery(
             deliveryId,
         );
         
-        const terminatedDelivery = await bostaClient.delivery.getDeliveryByTrakingNumber(
+        const terminatedDelivery = await bosta.delivery.getDeliveryByTrakingNumber(
             trackingNumber
         );
 

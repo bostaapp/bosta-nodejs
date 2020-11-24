@@ -1,4 +1,4 @@
-class PickupClient {
+class Pickup {
     constructor (apiClient) {
         this.apiClient = apiClient;
     }
@@ -131,4 +131,4 @@ class PickupClient {
     }
 }
 
-module.exports = PickupClient;
+export default Pickup;
